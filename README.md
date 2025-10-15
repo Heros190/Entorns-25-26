@@ -1,6 +1,6 @@
 # Entorns-25-26
 
-# ENUNCIAT
+## Descripcio del projecte
 Benvolguts Senyors/es,
 Ens adrecem a vostès des de l’Institut de Formació Professional Provençana de l’Hospitalet de
 Llobregat per presentar-los el projecte TapatApp. La idea d’aquest projecte neix de la necessitat
@@ -135,3 +135,22 @@ però és una feinada muntar-ho i desmuntar-ho tot cada dia!
 Seria fantàstic que, com a mestres que tenim cura dels infants, poguéssim enregistrar a l’app el
 temps en minuts que porten el pegat mentre són a l’escola i que tota aquesta informació quedi
 disponible per la resta de persones cuidadores de l’infant.
+
+## Objectius del projecte
+- Control del temps del pegat de l'infant
+- Control del tractament de la 1/2 del temps que l'infant està despert
+- Control del tractament d'un temps 
+- Compartir informació del tractament amb el servei mèdic
+- Accés restringit per tipus d'usuari
+- Desenvolpuar un App Mòbil
+
+## Actors de la App
+- Administrador
+- Servei Mèdic
+- Tutors 
+- Cuidadors
+- Infants
+- "Part pública"
+
+## RF1
+##
