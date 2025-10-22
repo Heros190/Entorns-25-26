@@ -152,5 +152,21 @@ disponible per la resta de persones cuidadores de l’infant.
 - Infants
 - "Part pública"
 
-## RF1
-##
+
+## Requisits Funcionals RF i Requisits No Funcionals
+### RF
+L’app ha de permetre iniciar i aturar un cronòmetre per controlar el temps que l’infant porta el pegat posat.
+L’app ha de permetre registrar quan l’infant s’adorm i es desperta per tal d’excloure aquestes hores del còmput total.
+L’app ha de calcular automàticament el temps restant per completar el tractament diari indicat.
+L’usuari ha de poder configurar el tipus de tractament segons les instruccions de l’oftalmòleg:
+    - Per hores fixes (ex: 6 hores/dia)
+    - Per fracció del temps despert (ex: ½ del temps despert)
+L’app ha de calcular de manera automàtica el temps necessari segons el tipus de tractament escollit.
+
+### RNF
+L’app ha de tenir un consum mínim de recursos per funcionar bé en dispositius mòbils de gamma baixa.
+Ha d’ocupar poc espai d’emmagatzematge (preferiblement menys de 50 MB).
+Ha de ser usable per persones amb dificultats visuals (ús de contrastos, grandàries de lletra, lectura de veu opcional, etc.).
+Ha de complir la normativa GDPR (Reglament General de Protecció de Dades) per garantir la confidencialitat de la informació de menors.
+Ha d’utilitzar xifratge per a l'emmagatzematge i transmissió de dades sensibles.
+L’aplicació ha de funcionar en mode offline i sincronitzar dades quan es recuperi la connexió.
