@@ -1,0 +1,19 @@
+flowchart LR
+
+    subgraph Client["Bloc Client"]
+        V["View<br/>(Input: Nom)"]
+        DaoClient["DaoClient<br/>(getUserName)"]
+        V <--> DaoClient
+    end
+
+    DaoClient -- "Request HTTP" --> WS
+    WS -- "Response HTTP" --> DaoClient
+
+    subgraph Server["Bloc Servidor"]
+        WS["webService<br/>(getUser)"]
+        DaoServer["Dao<br/>(getUserByName)"]
+        Data["DB ,  List Users"]
+        
+        WS <--> DaoServer
+        DaoServer <--> Data
+    end
