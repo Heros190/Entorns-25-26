@@ -184,7 +184,7 @@ Definició del En-point del WebService:
 
 URL Server desenvolupament: http://localhost:5000/
 
-| URL | Method | Paràmetres | Descripció | Output |
-|--------------|--------------|--------------|----------|----------|
+| URL          | Method       | Paràmetres   | Descripció | Output |
+|--------------|--------------|--------------|------------|--------|
 | /user        | GET          | Username <String>(obligatori)  |Retornem la informació de |
 { "code_responese=1, descripció="", name="Gustavo Lloris", username="glloris",password="12345", rol="tutor", email="glloris@xtec.cat"} |
