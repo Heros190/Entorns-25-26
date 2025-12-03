@@ -170,3 +170,20 @@ Ha de ser usable per persones amb dificultats visuals (ús de contrastos, grand�
 Ha de complir la normativa GDPR (Reglament General de Protecció de Dades) per garantir la confidencialitat de la informació de menors.
 Ha d’utilitzar xifratge per a l'emmagatzematge i transmissió de dades sensibles.
 L’aplicació ha de funcionar en mode offline i sincronitzar dades quan es recuperi la connexió.
+
+# Prototip 1
+
+Connectar Client / Servidor.
+Consultar dades d'usuari per nom.
+
+[Diagrama d'arquitectura prototip 1](https://www.mermaidchart.com/d/c7d71dbe-cced-4223-97b7-f2fbe4e4fd87)
+
+## End-Points WebService
+
+Definició del En-point del WebService: 
+
+URL Server desenvolupament: http://localhost:5000/
+
+| URL | Method | Paràmetres | Descripció | Output |
+|--------------|--------------|--------------|----------|----------|
+| /user       | Dato 2       | Dato 3       |Dato 4       |Dato 5   |
