@@ -186,4 +186,5 @@ URL Server desenvolupament: http://localhost:5000/
 
 | URL | Method | Paràmetres | Descripció | Output |
 |--------------|--------------|--------------|----------|----------|
-| /user       | Dato 2       | Dato 3       |Dato 4       |Dato 5   |
+| /user        | GET          | Username <String>(obligatori)  |Retornem la informació de |
+{ "code_responese=1, descripció="", name="Gustavo Lloris", username="glloris",password="12345", rol="tutor", email="glloris@xtec.cat"} |
