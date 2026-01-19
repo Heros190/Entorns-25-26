@@ -153,7 +153,7 @@ disponible per la resta de persones cuidadores de l’infant.
 - "Part pública"
 
 
-## Requisits Funcionals RF i Requisits No Funcionals
+## Requisits Funcionals RF i Requisits No Funcionals RNF
 ### RF
 L’app ha de permetre iniciar i aturar un cronòmetre per controlar el temps que l’infant porta el pegat posat.
 L’app ha de permetre registrar quan l’infant s’adorm i es desperta per tal d’excloure aquestes hores del còmput total.
@@ -171,6 +171,7 @@ Ha de complir la normativa GDPR (Reglament General de Protecció de Dades) per g
 Ha d’utilitzar xifratge per a l'emmagatzematge i transmissió de dades sensibles.
 L’aplicació ha de funcionar en mode offline i sincronitzar dades quan es recuperi la connexió.
 
+<<<<<<< HEAD
 # Prototip 1
 
 Connectar Client / Servidor.
@@ -188,3 +189,90 @@ URL Server desenvolupament: http://localhost:5000/
 |--------------|--------------|--------------|------------|--------|
 | /user        | GET          | Username <String>(obligatori)  |Retornem la informació de |
 { "code_responese=1, descripció="", name="Gustavo Lloris", username="glloris",password="12345", rol="tutor", email="glloris@xtec.cat"} |
+=======
+# Requisits Tècnics tapatApp
+## Arquitectura
+[Client Servidor](charts/mvc-generic.mermaid)
+
+## 1. Backend (Servidor i Gestió de Dades)
+
+El backend serà el cor del sistema, encarregat de gestionar dades, usuaris,
+i la lògica del sistema
+### a. Requisits del servidor
+
+- Allotjament: Hosting compartit
+- Base de dades: Mysql o MariaDB
+- Sistema operatiu: Linux o windows
+- Webservice:  RESTful llibreria Python Flask
+
+### b. Llenguatges de Programació
+
+Python
+
+### c. Seguretat
+
+- Autenticació i autorització pels usuaris
+- Xifratge de dades HTTPS
+- Còpies de seguretat automàtiques
+
+## 2. Frontend
+
+### a. Tipus de Clients
+
+- App Mòbil: Android
+- Consola Python
+- Framework Multiplataforma: Flutter (Apps IOS Android, Web, Desktop)
+
+### b. Emmagatzematge local i sincronització
+
+- Dades guardem en local: Token, nickname
+- Seguretat: HTTPS, autenticació serveis per Token
+
+### c. Gestió d'accesibilitat
+
+- Nivells A, AA, AAA d'accessibilitat
+
+## 3. Requisits Generals Infraestructura
+
+- Xarxa: Internet
+- Espai d'enmagatzematge a Servidor: 1Tb
+- APIs a tercers: No en fem servir
+
+### a. Gestiód'usuari i autentificació
+
+- Rols d'usuari: Tutor i cuidador
+- Seguretat de password: md5m, sha256 o sha512
+
+### b. Requisits d'Infraestructura
+
+- Xarxa: Internet
+- Espai d'enmagatzematge a Servidor: 1Tb
+- APIs a tercers: No en fem servir
+
+## 4. Requisits del procés de Desenvolupament
+
+- IDE's: VScode python, Android Studio, PyCharm
+- Control de versions: git, Github
+- Metodologia de desenvolupament: SCRUM
+- Testing i proves de qualitat(QA): Tests i proves unitàries
+<<<<<<< HEAD
+>>>>>>> 1781218 (a)
+=======
+
+# Prototip 1
+
+Connectar Client / Servidor.
+Consultar dades d'usuari per nom.
+
+[Diagrama d'arquitectura prototip 1](https://www.mermaidchart.com/d/c7d71dbe-cced-4223-97b7-f2fbe4e4fd87)
+
+## End-Points WebService
+
+Definició del En-point del WebService: 
+
+URL Server desenvolupament: http://localhost:5000/
+
+| URL | Method | Paràmetres | Descripció | Output |
+|--------------|--------------|--------------|----------|----------|
+| /user       | Dato 2       | Dato 3       |Dato 4       |Dato 5   |
+>>>>>>> 747c594 (a)
