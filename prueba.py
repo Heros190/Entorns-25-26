@@ -11,9 +11,8 @@ class User:
     def __str__(self):
         return (self.nom)
 users = [
-    User(username= "jdoe", nom="John Doe", password="12345", email="johnD@gmail.com", rol="tutor")
+    User(username= "jdoe", nom="John Doe", password="12345", email="johnD@gmail.com", rol="tutor"),
     User(username= "asmith", nom="Alice Smith", password="password", email="adjkad@adkm", rol= "tutor")
-    
 ]
 
 
