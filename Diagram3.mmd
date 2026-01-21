@@ -1,0 +1,42 @@
+classDiagram
+    Usuari <|-- Client
+    Usuari <|-- Administrador
+
+    Client : +registrar()
+    Client : +iniciar_sessio()
+    Client : +comprar_entrada()
+    Client : +veure_entrades()
+    Client : +cancel·lar_entrada()
+
+    Administrador : +registrar()
+    Administrador : +iniciar_sessio()
+    Administrador : +crear_esdeveniment()
+    Administrador : +modificar_esdeveniment()
+    Administrador : +eliminar_esdeveniment()
+
+    Esdeveniment : +nom
+    Esdeveniment : +descripcio
+    Esdeveniment : +data
+    Esdeveniment : +ubicacio
+    Esdeveniment : +entradesDisponibles
+    Esdeveniment : +mostrar_detalls()
+    Esdeveniment : +actualitzar_entrades()
+    Esdeveniment : +afegir_entrada()
+
+    Entrada : +preu
+    Entrada : +estat
+    Entrada : +marcar_com_vendida()
+    Entrada : +assignar_client(client)
+    Entrada : +mostrar_info()
+
+    Pagament : +import
+    Pagament : +data
+    Pagament : +realitzar_pagament()
+    Pagament : +confirmar_pagament()
+    Pagament : +mostrar_resum()
+
+    Administrador "1" --> "0..*" Esdeveniment
+    Esdeveniment "1" --> "1..*" Entrada
+    Client "0..*" --> "0..*" Entrada
+    Pagament "1" --> "1..*" Entrada
+    Pagament "1" --> "1" Client
