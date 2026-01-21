@@ -1,0 +1,17 @@
+classDiagram
+    class Artista {
+        +nom: String
+    }
+
+    class Album {
+        +titol: String
+        +dataLlançament: Date
+    }
+
+    class Canco {
+        +titol: String
+        +durada: Float
+    }
+
+    Artista "1" --> "M." Album : té
+    Album "N" --> "1..*" Canco : conté
