@@ -32,6 +32,6 @@ classDiagram
     Usuari <|-- Client
     Usuari <|-- Administrador
 
-    Administrador "1" --> "0..*" Esdeveniment : gestiona
-    Esdeveniment "1" --> "1..*" Entrada : te
-    Client "1" --> "0..*" Entrada : compra
+    Administrador "n" --> "m" Esdeveniment : gestiona
+    Esdeveniment "1" --> "n" Entrada : te
+    Client "1" --> "n" Entrada : compra
