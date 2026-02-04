@@ -1,0 +1,39 @@
+classDiagram
+
+class User {
+  - id : int
+  - username : string
+  - password : string
+  - email : string
+  - idrole : int
+}
+
+class Child {
+  - id : int
+  - child_name : string
+  - sleep_average : int
+  - treatment_id : int
+  - time : int
+}
+
+class Tap {
+  - id : int
+  - child_id : int
+  - status_id : int
+  - user_id : int
+  - init : datetime
+  - end : datetime
+}
+
+class UserDAO {
+  - users : List~User~
+  + listAllUsers() List~User~
+  + addUser(User u)
+  + updateUser(User u)
+  + deleteUser(int id)
+  + searchByEmail(String email) User
+}
+
+UserDAO --> User : manages
+User "1" --> "many" Tap : creates
+Child "1" --> "many" Tap : has
