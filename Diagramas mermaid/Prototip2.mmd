@@ -34,6 +34,18 @@ class UserDAO {
   + searchByEmail(String email) User
 }
 
-UserDAO --> User : manages
-User "1" --> "many" Tap : creates
-Child "1" --> "many" Tap : has
+class ChildDAO {
+  - children : List~Child~
+  + listAllChildren() List~Child~
+  + addChild(Child c)
+  + updateChild(Child c)
+  + deleteChild(int id)
+  + getChildById(int id) Child
+}
+
+class TapDAO {
+  + addTap(Tap t)
+  + updateTap(Tap t)
+  + deleteTap(int id)
+  + getTapsByChild(int child_id) 
+}
