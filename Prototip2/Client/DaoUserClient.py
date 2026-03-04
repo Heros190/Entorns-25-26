@@ -1,7 +1,7 @@
 import requests
 from User import *
-from flask import jsnonify
-from client import User
+from flask import jsonify
+#from client import User
 
 class DaoUserClient:
     base_URL = "http://localhost:5000"  # URL base del WebService
@@ -32,3 +32,9 @@ class DaoUserClient:
             return user
         else:
             return None
+        
+#TEST
+daoClient=DaoUserClient()
+user=User("","user1","pass1","user1@example.com",1,"")
+resposta=daoClient.login(user)
+print(resposta)
