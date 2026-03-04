@@ -1,4 +1,4 @@
-class UserDAO:
+'''class UserDAO:
     def __init__(self, users_list):
         self.users = users_list  # referencia a la lista existente
 
@@ -35,3 +35,23 @@ class UserDAO:
             if u.email == email:
                 return u
         return None
+'''
+'''' 
+    def login(self, identifier, password):
+        for user in self.users:
+            if (user.username == identifier or user.email == identifier) and user.password == password:
+                return user
+        return None
+    
+class ChildDAO:
+    def __init__(self, children_list, relation_user_child):
+        self.children = children_list  # referencia a la lista existente
+        self.relation_user_child = relation_user_child  # referencia a la lista existente
+
+    def getChilds(self, user): 
+        # Get IDs from relations
+        child_ids = {r['child_id'] 
+                     for r in self.relation_user_child if r['user_id'] == user.id}
+        # Return Child objects
+        return [c for c in self.children if c.id in child_ids]
+'''
