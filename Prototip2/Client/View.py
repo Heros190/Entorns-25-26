@@ -1,5 +1,5 @@
-from User import *;
-from DaoUserClient import *;
+from User import *
+from DaoUserClient import *
 
 class ViewConsole:
 
@@ -37,12 +37,13 @@ class ViewConsole:
                     print("Invalid option. Please try again.")
     
     def viewLogin(self):
+        username = ""
         email = input("Enter your username or email: ")
         if "@" not in email:
             username = email
             email = ""
         password = input("Enter your password: ")
-        user=User(username, email , password,"","") # username, email, password, idrole, token
+        user=User("",username, password , email,"","") # username, email, password, idrole, token
         resposta=self.daoClient.login(user)
         if(resposta):
             self.viewUser(resposta)
@@ -50,7 +51,7 @@ class ViewConsole:
             self.viewUserNotAuthenticated()
     
     def viewUser(self, user):
-        print(f"Welcome, {user.name}!")
+        print(f"Welcome, {user.username}!")
         # Here you can add more options for the authenticated user
 
     def viewUserNotAuthenticated(self):

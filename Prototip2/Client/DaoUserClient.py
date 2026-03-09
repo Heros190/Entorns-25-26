@@ -21,14 +21,16 @@ class DaoUserClient:
             code_response = user_data_raw['coderesponse']
             if code_response == "0":
                 return None
-            user_raw = user_data_raw['data']
-            else: #usuari validat (self, id , username, password, email, idrole, token):
+            
+               
+            else: #usuari validat (self, id , username, password, email, idrole, token): 
+                user_raw = user_data_raw['data']
                 user=User(user_raw['id'], # crear objecte User a partir de la resposta del servidor
                           user_raw['username'],
-                          user_data_raw['password'],
-                          user_data_raw['email'],
-                          user_data_raw['idrole'],
-                          user_data_raw['token'])
+                          user_raw['password'],
+                          user_raw['email'],
+                          user_raw['idrole'],
+                          user_raw['token'])
             #retornar objeto User
             return user
         else:
