@@ -29,7 +29,7 @@ def getusers():
 def login():
     # Existing username/password login
     data = request.get_json()
-    identifier = data.get('username')  # username or email
+    identifier = data.get('identifier')  # username or email
     password = data.get('password')
     user = userDao.login(identifier, password)
     response = ApiResponse(

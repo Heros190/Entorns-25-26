@@ -12,7 +12,7 @@ class DaoUserClient:
         # Petició HTTP al WebService per fer login
         URL_peticio = self.base_URL + "/login"
         params_POST = {
-            "username": user.username,  # o user.email
+            "identifier": user.username or user.email,
             "password": user.password
         }
         response = requests.post(URL_peticio, json=params_POST)
@@ -21,9 +21,10 @@ class DaoUserClient:
             code_response = user_data_raw['coderesponse']
             if code_response == "0":
                 return None
+            user_raw = user_data_raw['data']
             else: #usuari validat (self, id , username, password, email, idrole, token):
-                user=User(user_data_raw['id'], # crear objecte User a partir de la resposta del servidor
-                          user_data_raw['username'],
+                user=User(user_raw['id'], # crear objecte User a partir de la resposta del servidor
+                          user_raw['username'],
                           user_data_raw['password'],
                           user_data_raw['email'],
                           user_data_raw['idrole'],
@@ -35,6 +36,6 @@ class DaoUserClient:
         
 #TEST
 daoClient=DaoUserClient()
-user=User("","user1","pass1","user1@example.com",1,"")
+user=User("","mare","12345","user1@example.com",1,"")
 resposta=daoClient.login(user)
 print(resposta)
