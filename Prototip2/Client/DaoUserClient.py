@@ -1,4 +1,5 @@
 import requests
+from Child import *
 from User import *
 from flask import jsonify
 #from client import User
@@ -35,9 +36,29 @@ class DaoUserClient:
             return user
         else:
             return None
-        
+    
+
+    def getChilds(self, user: User):
+        payload = {"id_user": user.id}
+        r = requests.post(f"{self.base_URL}/child", json=payload)
+        if r.status_code == 200:
+            res = r.json()
+            if res['coderesponse'] == "1":
+                childs = []
+                for c in res['data']:
+                    childs.append(Child(
+                        id=c.get('id'),
+                        child_name=c.get('child_name'),
+                        sleep_average=c.get('sleep_average'),
+                        treatment_id=c.get('treatment_id'),
+                        time=c.get('time')
+                    ))
+                return childs
+        return []
+    
+    
 #TEST
 daoClient=DaoUserClient()
-user=User("","mare","12345","user1@example.com",1,"")
+user = User(id="", username="mare", password="12345", email="user1@example.com", idrole=1, token="")
 resposta=daoClient.login(user)
 print(resposta)
