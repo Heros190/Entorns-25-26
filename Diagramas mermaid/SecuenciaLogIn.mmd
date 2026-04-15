@@ -1,0 +1,20 @@
+sequenceDiagram
+    box rgba(173, 216, 230, 0.5) Entorno Cliente
+        participant Client
+    end
+    box rgba(144, 238, 144, 0.3) Entorno Servidor
+        participant Server
+        participant BBDD
+    end
+
+    Client->>Server: Request HTTPS login, method POST params: username/password
+    Server->>BBDD: Generate Token for user and storage in table User
+    Server->>Client: If login OK generate Token Response HTTPS, Body(json) Informaciño Usuari i Token
+    
+    Client ->>Server:Request HTTPS Child/Header TokenUser
+    Server ->>BBDD: Validate TokenUserA in BBDD
+    Server ->>Client: If validate Token Ok, Response HTTPS Body(json) Informacio childs of userA
+
+    Client ->>Server: Request HTTPS Child/Header TokenUserB
+    Server ->>BBDD: TokenUserB don't exist in BBDD
+    Server ->>Client: Response HTTPS Body (json) Error: Authenticated Service
