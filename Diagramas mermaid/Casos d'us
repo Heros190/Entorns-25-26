@@ -1,0 +1,17 @@
+flowchart LR
+  subgraph Sistema["Sistema"]
+        UC2["Registrarse"]
+        UC1["Iniciar sesión"]
+        UC3["Ver perfil"]
+        UC4["Editar perfil"]
+        UC5["Gestionar niños"]
+        UC6["Ver seguimiento del niño"]
+        UC7["Poner tap"]
+        UC8["Quitar tap"]
+        UC9["Ver comentarios"]
+        UC10["Poner comentarios"]
+  end
+
+  Tutor(("Tutor")) --> UC1 & UC2 & UC3 & UC4 & UC5 & UC6 & UC7 & UC8 & UC9 & UC10
+  Children(("Cuidador")) --> UC1 & UC2 & UC3 & UC6 & UC7 & UC8 & UC10
+  Médico(("Médico")) --> UC1 & UC2 & UC5 & UC6 & UC9
