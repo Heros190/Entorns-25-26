@@ -47,6 +47,7 @@ class UserDAO:
 
     def getHash(self, username):
         miliseconds = str(time() * 1000)
+        data = username + miliseconds
         hash_object = hashlib.sha256(data.encode('utf-8'))
         return hash_object.hexdigest()
 
