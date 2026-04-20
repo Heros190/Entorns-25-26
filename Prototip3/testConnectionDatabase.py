@@ -8,7 +8,7 @@ def list_users():
         host="localhost",
         user="root",
         password="root",
-        database="tapatappdam1"
+        database="tapatapp"
     )
     cursor = connection.cursor(dictionary=True)
 
