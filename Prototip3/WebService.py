@@ -1,11 +1,12 @@
 from flask import Flask, request, jsonify
+from ChildDAO import ChildDAO
 from UserDAO import UserDAO
 
 
 app = Flask(__name__)
 
 userDao = UserDAO()
-
+childDao = ChildDAO()
 
 
 # -------------------------
@@ -46,6 +47,30 @@ def login():
     }), 401
 
 
+# -------------------------
+# CHILDS
+# -------------------------
+""" 
+@app.route('/childs', methods=['POST'])
+def childs():
+    data = request.get_json()
+    token = data.get("token")
+
+    if not token:
+        return jsonify({
+            "msg": "Missing token",
+            "coderesponse": "0",
+            "data": None
+        }), 400
+
+    childs = childDao.listChilds(token)
+
+    return jsonify({
+        "msg": "Childs retrieved",
+        "coderesponse": "1",
+        "data": childs
+    }), 200
+ """
 # -------------------------
 # RUN SERVER
 # -------------------------
