@@ -1,8 +1,13 @@
 from flask import Flask, request, jsonify
 from ChildDAO import ChildDAO
 from UserDAO import UserDAO
+from dataclasses import dataclass, asdict
 
-
+@dataclass
+class ApiResponse:
+    msg: str
+    coderesponse: str
+    data: any
 app = Flask(__name__)
 
 userDao = UserDAO()
@@ -50,27 +55,32 @@ def login():
 # -------------------------
 # CHILDS
 # -------------------------
-""" 
+
 @app.route('/childs', methods=['POST'])
 def childs():
-    data = request.get_json()
-    token = data.get("token")
+    token = request.headers.get("apikeyproven")
+    user=None
+    if(token):
+        #comprovar que el token existeix a un usuari
+        user=UserDAO.getUserByToken(token)
+    
+    if not user:
+        response = ApiResponse(
+            msg="Acces",
+            coderesponse="0"
+            data=""
+        )
+        return jsonify(asdict(response)),400
 
-    if not token:
-        return jsonify({
-            "msg": "Missing token",
-            "coderesponse": "0",
-            "data": None
-        }), 400
-
-    childs = childDao.listChilds(token)
-
-    return jsonify({
-        "msg": "Childs retrieved",
-        "coderesponse": "1",
-        "data": childs
-    }), 200
- """
+    data=request.get_json()
+    childs=childDao.getChilds(user['id'])
+    response = ApiResponse(
+        msg="getChilds",
+        coderesponse="1"
+        data=childs
+    )
+    return jsonify(asdict(response)),200
+    
 # -------------------------
 # RUN SERVER
 # -------------------------

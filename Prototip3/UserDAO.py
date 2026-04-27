@@ -14,6 +14,18 @@ class UserDAO:
             database="tapatapp"
         )
         return connection
+    
+    def getUserByToken(self, token):
+         #connect to database
+        con=self.connectBBDD()
+        cursor=con.cursor(dictionary=True)
+        query = "SELECT * FROM User WHERE token = '" + token + "'"
+        cursor.execute(query)
+        user=cursor.fetchone()
+        cursor.close()
+        con.close()
+        return user
+    
 
     def login(self, identifier, password):
         #connect to database
@@ -66,29 +78,9 @@ class UserDAO:
 
 
 dao=UserDAO() 
-print(dao.getHash("user1"))
 
-u=dao.login("mare","mare")
+u=dao.getUserByToken("ba467e9ba69df8fc1ec5df681ab8024e19b0b57e68714281d1e4712772bd30c2")
 print(u)
 
-
-
-
-'''miliseconds = str(time()*1000)
-print("Time in miliseconds since epoch:", miliseconds)
-data = "Hola mundo "+miliseconds
-print(data) 
-
-# 2. Crear el objeto hash SHA-256 y actualizarlo con los datos
-hash_object = hashlib.sha256(data.encode('utf-8'))
-#3. Obtener el resultado en formato hexadecimal
-token = hash_object.hexdigest()
-print(token) '''
-
-
-
-#Cliente
-# DAOclient --> login(username, password) --> webservice
-#webservice --loginOK = token --> DAOclient
-#DAOclient -->/getChildren(token) --> webservice
-#webservice --> json(childrenList) --> DAOclient
+u=dao.getUserByToken("a")
+print(u)
