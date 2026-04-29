@@ -67,7 +67,7 @@ def childs():
     if not user:
         response = ApiResponse(
             msg="Acces",
-            coderesponse="0"
+            coderesponse="0",
             data=""
         )
         return jsonify(asdict(response)),400
@@ -76,7 +76,7 @@ def childs():
     childs=childDao.getChilds(user['id'])
     response = ApiResponse(
         msg="getChilds",
-        coderesponse="1"
+        coderesponse="1",
         data=childs
     )
     return jsonify(asdict(response)),200
