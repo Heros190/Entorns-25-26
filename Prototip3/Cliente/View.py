@@ -15,7 +15,7 @@ class ViewConsole:
             option=input("Enter Option: ")
             if(option.isdigit):
                 optionInt=int(option)
-                if(optionInt >0 and optionInt <3):
+                if(optionInt >0 and optionInt <5):
                     return optionInt
             
             print("Error: Introdueix una opció correcta")
@@ -23,7 +23,7 @@ class ViewConsole:
         
     def viewGeneral(self):
         option=-1
-        while(option!=2):
+        while(True):
             option=self.viewShowMenu()
             match option:
                 case 1:
@@ -31,16 +31,34 @@ class ViewConsole:
                     self.viewLogin()
                 case 2:
                     #login Token
-                    self.viewLoginToken()
-                    print("Login Token")
+                    self.viewLoginToken(self.token)
                 case 3:
                     #Childs
-                    print("Childs")
+                    print("View Childs")
+                    self.viewChilds(self.token)
                     #self.viewLogin()
                 case 4:
                     # Quit
+                    exit()
                     print("Adeu, Gràcies per utilitzar l'aplicació")
-                
+
+
+    def viewChilds(self, token):
+        print("View Childs")
+        resposta_child=self.daoClient.childToken(token)
+        if(resposta_child):
+            print(resposta_child)              
+        
+
+    def viewLoginToken(self, token):
+        print("View LOGIN TOKEN")
+        resposta_user=self.daoClient.loginToken(token)
+        if(resposta_user):
+            self.viewUser(resposta_user)
+            self.token=resposta_user.token
+        else:
+            self.viewUserNotAutenticated()
+
     def viewLogin(self):
         print("View LOGIN")
         print("Introdueix el Username o email i el password")
@@ -50,7 +68,7 @@ class ViewConsole:
         resposta_user=self.daoClient.login(user)
         if(resposta_user):
             self.viewUser(resposta_user)
-            token=resposta_user.token
+            self.token=resposta_user.token
         else:
             self.viewUserNotAutenticated()
     
@@ -66,15 +84,5 @@ class ViewConsole:
 viewConsole=ViewConsole()
 
 viewConsole.viewGeneral()
- 
-
-
-
-
-
-        
-
-
-        
 
 
