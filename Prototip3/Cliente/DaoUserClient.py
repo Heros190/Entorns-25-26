@@ -63,7 +63,26 @@ class DaoUserClient:
         else:
             return None
 
+    def tapToken(self, token, child_id):
+        url = self.base_URL + "/taps"
 
+        headers = {
+            "api-token": token
+        }
+
+        data = {
+            "child_id": child_id
+        }
+
+        response = requests.post(url, headers=headers, json=data)
+
+        if response.status_code == 200:
+            return response.json()
+        else:
+            print("Error taps:", response.status_code)
+            return None
+    
+    
 daoClient=DaoUserClient()
 
 #resposta=daoClient.loginToken("20732fb71deb93f1ec163dc3b03aaafddfff76ccfdf45150e94d01eb099eb651")

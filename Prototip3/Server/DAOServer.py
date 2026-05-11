@@ -99,7 +99,31 @@ class ChildDAO:
         cursor.close()
         con.close()
         return  results
-   
+    
+class TapDAO:
+
+    def connectBBDD(self):
+        return mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="root",
+            database="tapatapp"
+        )
+
+    def getTap(self, id_child):
+        con = self.connectBBDD()
+        cursor = con.cursor(dictionary=True)
+        query = """
+            SELECT *
+            FROM Tap
+            WHERE child_id = %s
+        """
+        cursor.execute(query, (id_child,))
+        results = cursor.fetchall()
+        cursor.close()
+        con.close()
+        return results
+    
 '''
 cdao=ChildDAO()
 res=cdao.getChilds("1")
@@ -111,8 +135,13 @@ u=dao.getUserByToken("123455")
 print(u)
 '''
 
+dao = TapDAO()
 
+id_child = input("Introduce el id_child: ")
 
-
+res = dao.getTap(id_child)
+print("Taps encontrados:")
+for tap in res:
+    print(tap)
 
 

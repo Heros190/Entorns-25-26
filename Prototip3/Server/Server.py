@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from DAOServer import UserDAO,ChildDAO
+from DAOServer import UserDAO,ChildDAO,TapDAO
 from dataclasses import dataclass, asdict
 
 @dataclass
@@ -71,8 +71,34 @@ def child():
         )
         return jsonify(asdict(response)),400
     
+@app.route('/taps', methods=['POST'])
+def taps():
+    token = request.headers.get("api-token")
+    data = request.get_json()
 
+    u = None
 
+    if token:
+        u = userDao.getUserByToken(token)
+
+    if u:
+        child_id = data.get("child_id")
+
+        taps = TapDAO().getTap(child_id)
+
+        response = ApiResponse(
+            msg="GetTaps",
+            coderesponse="1",
+            data=taps
+        )
+        return jsonify(asdict(response)), 200
+
+    else:
+        return jsonify(asdict(ApiResponse(
+            msg="Acces not granted",
+            coderesponse="0",
+            data=""
+        ))), 400
 
 
 if __name__ == '__main__':
